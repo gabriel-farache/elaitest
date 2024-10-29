@@ -1,0 +1,48 @@
+# From https://github.com/redhat-developer/red-hat-developer-hub-software-templates/blob/main/skeletons/tekton/tekton/pipelinerun.yaml
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: elaitest-46d4d58
+  namespace: orchestrator-gitops
+  labels:
+    backstage.io/kubernetes-id: elaitest-ci
+spec:
+  params:
+    - name: gitUrl
+      value: git@github.com:gabriel-farache/elaitest.git
+    - name: gitOpsUrl
+      value: git@github.com:gabriel-farache/elaitest-gitops.git
+    - name: workflowId
+      value: elaitest
+    - name: convertToFlat
+      value: 'false'
+    - name: quayOrgName
+      value: gfarache
+    - name: quayRepoName
+      value: template-test
+  pipelineRef:
+    name: workflow-deployment
+  workspaces:
+    - name: workflow-source
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    - name: workflow-gitops
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    - name: docker-credentials
+      secret:
+        secretName: docker-credentials
+    - name: ssh-creds
+      secret:
+        secretName: git-ssh-credentials
