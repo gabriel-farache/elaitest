@@ -3,7 +3,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: elaitest-46d4d58
+  name: elaitest-166b90b
   namespace: orchestrator-gitops
   labels:
     backstage.io/kubernetes-id: elaitest-ci
