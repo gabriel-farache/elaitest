@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: elaitest
+  description: yolo
+  annotations:
+    argocd/app-selector: rht-gitops.com/janus-argocd=elaitest
+    backstage.io/kubernetes-namespace: orchestrator-gitops
+    backstage.io/kubernetes-id: elaitest-ci
+    janus-idp.io/tekton: elaitest
+    github.com/project-slug: gabriel-farache/elaitest
+spec:
+  type: workflow-project
+  system: system:default/janus-orchestrator
+  lifecycle: development
+  owner: user:default/gabriel-farache
