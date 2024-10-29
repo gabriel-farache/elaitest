@@ -2,7 +2,7 @@ id: elaitest
 version: '1.0.0-SNAPSHOT'
 specVersion: '0.8'
 name: 'elaitest'
-description: 'yolo'
+description: 'yolo2'
 annotations:
   - "workflow-type/assessment"
 dataInputSchema:
